@@ -1,4 +1,4 @@
-import { Card, Grid, Row, Text } from '@nextui-org/react'
+import { Button, Card, Grid, Row, Text } from '@nextui-org/react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -21,6 +21,11 @@ const DetailPokemon = ({pokemon}) => {
                 </Grid>
                 <Grid xs={7}>
                     <Card>
+                        <Card.Header css={{display:"flex", justifyContent:'flex-end'}}>
+                            <Button bordered color="primary" auto>
+                            Add favorites
+                            </Button>
+                        </Card.Header>
                         <Card.Body>
                             <Text h2>{pokemon.name}</Text>
                             <Text b>#{pokemon.id}</Text>
