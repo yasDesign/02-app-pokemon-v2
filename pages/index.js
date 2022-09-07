@@ -7,7 +7,7 @@ import CardPokemon from '../components/ui/CardPokemon'
 const Home = ({pokemons}) => {
   return (
     <>
-     <Layout>
+     <Layout title={"Pokemons app"}>
       <Grid.Container gap={2}>
         {
           pokemons.map((pokemon)=>(

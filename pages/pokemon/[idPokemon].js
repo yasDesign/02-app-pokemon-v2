@@ -9,7 +9,7 @@ const DetailPokemon = ({pokemon}) => {
   
   return (
     <>
-        <Layout>
+        <Layout title={`Pokemon- ${pokemon.name}`}>
             
             <Grid.Container gap={2}>
                 <Grid xs={5}>

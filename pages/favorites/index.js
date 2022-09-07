@@ -5,7 +5,7 @@ import Layout from '../../components/layout/Layout'
 const Favorites = () => {
   return (
     <>
-    <Layout>
+    <Layout title={"Pokemons- Favorites"}>
         <Text h4>Favorites</Text>
     </Layout>
     </>
