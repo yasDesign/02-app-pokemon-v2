@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import pokeApi from '../../api/pokeApi'
 import Layout from '../../components/layout/Layout'
 import { existInFavorite, setLocalStorage } from '../../utils/localFavorites';
+import { getPokemonsData } from '../../utils/pokemoDataResponse';
 
 const DetailByNamePage = ({pokemon}) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -107,13 +108,8 @@ export const getStaticPaths=async (params)=>{
 
 export const getStaticProps=async ({params})=>{
   const namePokemon=params.namePokemon
-  const {data}=await pokeApi.get(`/pokemon/${namePokemon}`)
-  const pokemon={
-    id:data.id,
-    name:data.name,
-    sprites:data.sprites
-  }
-  return {props:{pokemon}}
+ 
+  return {props:{pokemon:await getPokemonsData(namePokemon)}}
 }
 
 export default DetailByNamePage

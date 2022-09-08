@@ -1,9 +1,9 @@
 import { Button, Card, Grid, Row, Text } from "@nextui-org/react";
 import confetti from "canvas-confetti";
 import React, { useEffect, useState } from "react";
-import pokeApi from "../../api/pokeApi";
 import Layout from "../../components/layout/Layout";
 import { existInFavorite, setLocalStorage } from "../../utils/localFavorites";
+import { getPokemonsData } from "../../utils/pokemoDataResponse";
 
 const DetailPokemon = ({ pokemon }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -105,12 +105,6 @@ export const getStaticPaths = async (ctx) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { data } = await pokeApi.get(`/pokemon/${params.idPokemon}`);
-  const pokemon={
-    id:data.id,
-    name:data.name,
-    sprites:data.sprites
-  }
-  return {props:{pokemon}}
+  return {props:{pokemon:await getPokemonsData(params.idPokemon)}}
 };
 export default DetailPokemon;
