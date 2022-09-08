@@ -1,6 +1,8 @@
-import { Link, Navbar, Spacer, Text, useTheme } from "@nextui-org/react"
+import { Navbar, Spacer, Text, useTheme } from "@nextui-org/react"
 import Head from "next/head"
 import NextLink from 'next/link'
+
+const origin=typeof window==='undefined'? '':window.location.origin
 
 const Layout = ({children, title}) => {
     const {theme}=useTheme()
@@ -8,6 +10,9 @@ const Layout = ({children, title}) => {
         <>
         <Head>
             <title>{title}</title>
+            <meta property="og:title" content={`Pokemon ${title}!`} />
+            <meta property="og:description" content={`Descripcion de ${title}`} />
+            <meta property="og:image" content={`${origin}/img/background.jpg`} />
         </Head>
             <Navbar css={{background:theme.colors.gray200.value}}>
                
