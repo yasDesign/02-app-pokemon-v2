@@ -9,7 +9,7 @@ const DetailPokemon = ({ pokemon }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   useEffect(() => {
     setIsFavorite(existInFavorite(pokemon.id));
-  }, []);
+  }, [pokemon.id]);
 
   const addFavorites = () => {
     setLocalStorage(pokemon.id);
@@ -38,6 +38,7 @@ const DetailPokemon = ({ pokemon }) => {
               <Card.Body>
                 <Card.Image
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
+                  alt="image pokemon"
                 />
               </Card.Body>
             </Card>
@@ -65,21 +66,25 @@ const DetailPokemon = ({ pokemon }) => {
                     src={pokemon.sprites.back_default}
                     width={200}
                     height={200}
+                    alt="sprite"
                   />
                   <Card.Image
                     src={pokemon.sprites.front_default}
                     width={200}
                     height={200}
+                    alt="sprite"
                   />
                   <Card.Image
                     src={pokemon.sprites.back_shiny}
                     width={200}
                     height={200}
+                    alt="sprite"
                   />
                   <Card.Image
                     src={pokemon.sprites.front_shiny}
                     width={200}
                     height={200}
+                    alt="sprite"
                   />
                 </Row>
               </Card.Body>
@@ -101,9 +106,11 @@ export const getStaticPaths = async (ctx) => {
 
 export const getStaticProps = async ({ params }) => {
   const { data } = await pokeApi.get(`/pokemon/${params.idPokemon}`);
-
-  return {
-    props: { pokemon: data },
-  };
+  const pokemon={
+    id:data.id,
+    name:data.name,
+    sprites:data.sprites
+  }
+  return {props:{pokemon}}
 };
 export default DetailPokemon;

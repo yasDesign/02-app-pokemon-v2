@@ -14,7 +14,7 @@ const FavoriteCardPokemon = ({id}) => {
     <Grid  xs={6} md={3} lg={2} onClick={goDetail}>
         <Card isHoverable isPressable>
           <Card.Body>
-            <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`} width={"100%"} height={220}/>
+            <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`} width={"100%"} height={220} alt="imagen pokemon"/>
           </Card.Body>
         </Card>
       </Grid>
