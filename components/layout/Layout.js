@@ -12,16 +12,16 @@ const Layout = ({children, title}) => {
             <Navbar css={{background:theme.colors.gray200.value}}>
                
                     <NextLink href="/" passHref>
-                        <Link>
+                        <div style={{display:'flex', alignItems:'center', cursor:'pointer'}}>
                             <Text h2>P</Text>
                             <Text h3>okemon</Text>
-                        </Link>
+                            </div>
                     </NextLink>               
                 <Spacer/>
                 <NextLink href="/favorites" passHref>
-                    <Link>
-                        <Text h5>Favorites</Text>
-                    </Link>
+                    
+                        <Text color={'white'} css={{cursor:'pointer'}}>Favorites</Text>
+                    
                 </NextLink>
             </Navbar>
             <main>
