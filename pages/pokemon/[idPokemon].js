@@ -1,12 +1,16 @@
 import { Button, Card, Grid, Row, Text } from '@nextui-org/react'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 import pokeApi from '../../api/pokeApi'
 import Layout from '../../components/layout/Layout'
+import { existInFavorite, setLocalStorage } from '../../utils/localFavorites'
 
 const DetailPokemon = ({pokemon}) => {
-  
+    const [isFavorite, setIsFavorite] = useState(existInFavorite(pokemon.id))
+  const addFavorites=()=>{
+    setLocalStorage(pokemon.id)
+    setIsFavorite(!isFavorite)
+  }
+
   return (
     <>
         <Layout title={`Pokemon- ${pokemon.name}`}>
@@ -22,8 +26,8 @@ const DetailPokemon = ({pokemon}) => {
                 <Grid xs={7}>
                     <Card>
                         <Card.Header css={{display:"flex", justifyContent:'flex-end'}}>
-                            <Button bordered color="primary" auto>
-                            Add favorites
+                            <Button bordered color="primary" auto onClick={addFavorites} ghost={!isFavorite}>
+                            {isFavorite? 'remove favorites':'Add favorites'}
                             </Button>
                         </Card.Header>
                         <Card.Body>
