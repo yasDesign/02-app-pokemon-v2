@@ -1,4 +1,5 @@
 import { Button, Card, Grid, Row, Text } from '@nextui-org/react'
+import confetti from 'canvas-confetti'
 import React, { useState } from 'react'
 import pokeApi from '../../api/pokeApi'
 import Layout from '../../components/layout/Layout'
@@ -9,6 +10,17 @@ const DetailPokemon = ({pokemon}) => {
   const addFavorites=()=>{
     setLocalStorage(pokemon.id)
     setIsFavorite(!isFavorite)
+
+//     confetti({
+//         particleCount: 100,
+//         startVelocity: 30,
+//         spread: 360,
+//         origin: {
+//           x: 1,
+//           y: 0
+//         }
+//       });
+//   }
   }
 
   return (

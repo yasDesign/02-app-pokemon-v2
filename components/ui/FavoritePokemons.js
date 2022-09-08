@@ -7,7 +7,7 @@ const FavoritePokemons = ({pokemons}) => {
   return (
     <Grid.Container gap={2}>
     {pokemons.map(id=>(
-      <FavoriteCardPokemon id={id}/>
+      <FavoriteCardPokemon id={id} key={id}/>
     )) }
   </Grid.Container>
   )
