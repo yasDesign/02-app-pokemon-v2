@@ -102,14 +102,23 @@ export const getStaticPaths=async (params)=>{
   const namesPokemon=data.results.map(item=>item.name)
   return {
     paths:namesPokemon.map(namePokemon=>({params:{namePokemon}})),
-    fallback:false
+    fallback:'blocking'
   }
 }
 
 export const getStaticProps=async ({params})=>{
   const namePokemon=params.namePokemon
+  const pokemon=await getPokemonsData(namePokemon)
+  if (!pokemon){
+    return {
+      redirect:{
+        destination:'/',
+        permanent:false
+      }
+    }
+  }
  
-  return {props:{pokemon:await getPokemonsData(namePokemon)}}
+  return {props:{pokemon}}
 }
 
 export default DetailByNamePage
